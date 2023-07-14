@@ -10,3 +10,5 @@ To compile Test app from source:
 git https://github.com/NguyenVanDuc36/Fcorp-Test.git 
 && cd Fcorp-Test/_deploy/local && bash build.sh
 ```
+
+Open [http://localhost:3000/](http://localhost:3000/) 
