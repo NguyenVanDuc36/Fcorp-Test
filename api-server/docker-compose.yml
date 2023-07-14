@@ -1,0 +1,51 @@
+version : '3'
+
+networks:
+  testapp:
+    name: 'testapp'
+
+services:
+  # app:
+  #   container_name : 'api-server'
+  #   build: .
+  #   ports:
+  #     - "4000:4000"
+  #   depends_on:
+  #     - elasticsearch
+  #   networks:
+  #     - testapp
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - testapp
+
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:7.14.0
+  #   container_name: kibana
+  #   environment:
+  #     - ELASTICSEARCH_URL=http://elasticsearch:9200
+  #   ports:
+  #     - 5601:5601
+  #   networks:
+  #     - testapp
+  #   depends_on:
+  #     - elasticsearch
+
+volumes:
+  esdata:
+    driver: local
