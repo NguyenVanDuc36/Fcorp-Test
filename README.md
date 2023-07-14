@@ -7,5 +7,6 @@ To compile Test app from source:
 > Note: If you want to start the application using docker
 
 ```
-git https://github.com/NguyenVanDuc36/Fcorp-Test.git && cd Fcorp-Test/_deploy/local && bash build.sh
+git https://github.com/NguyenVanDuc36/Fcorp-Test.git 
+&& cd Fcorp-Test/_deploy/local && bash build.sh
 ```
